@@ -29,11 +29,11 @@ readonly test_playbook="${role_dir}/docker-tests/test.yml"
 #readonly docker_image="geerlingguy/docker"
 #readonly image_tag="${docker_image}-${DISTRIBUTION}${VERSION}-ansible"
 # bertvv
-#readonly docker_image="bertvv/ansible-testing"
-#readonly image_tag="${docker_image}:${DISTRIBUTION}_${VERSION}"
+readonly docker_image="bertvv/ansible-testing"
+readonly image_tag="${docker_image}:${DISTRIBUTION}_${VERSION}"
 # williamyeh
-readonly docker_image="williamyeh/ansible"
-readonly image_tag="${docker_image}:${DISTRIBUTION}${VERSION}"
+#readonly docker_image="williamyeh/ansible"
+#readonly image_tag="${docker_image}:${DISTRIBUTION}${VERSION}"
 
 # Distribution specific settings
 init="/sbin/init"
