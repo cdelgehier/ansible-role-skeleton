@@ -1,4 +1,4 @@
-# Test playbook for Ansible role bertvv.ROLENAME
+# Test playbook for Ansible role cdelgehier.ROLENAME
 ---
 
 - hosts: all
