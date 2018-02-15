@@ -82,9 +82,9 @@ configure_environment() {
     'ubuntu_16.04'|'debian_8')
       run_opts=('--volume=/run' '--volume=/run/lock' '--volume=/tmp' '--volume=/sys/fs/cgroup:/sys/fs/cgroup:ro' '--cap-add=SYS_ADMIN' '--cap-add=SYS_RESOURCE')
 
-      if [ -x '/usr/sbin/getenforce' ]; then
-        run_opts+=('--volume=/sys/fs/selinux:/sys/fs/selinux:ro')
-      fi
+      #if [ -x '/usr/sbin/getenforce' ]; then
+      #  run_opts+=('--volume=/sys/fs/selinux:/sys/fs/selinux:ro')
+      #fi
       ;;
     *)
       log "Warning: no run options added for ${DISTRIBUTION} ${VERSION}"
@@ -151,16 +151,16 @@ run_syntax_check() {
 
 run_test_playbook() {
   log 'Running playbook'
-  exec_container ansible-playbook "${test_playbook}"
+  exec_container ansible-playbook "${test_playbook}" --diff
   log 'Run finished'
 }
 
 run_idempotence_test() {
-  log 'Running idempotence test'
+  log 'Running idempotence test' 
   local output
   output="$(mktemp)"
 
-  exec_container ansible-playbook "${test_playbook}" 2>&1 | tee "${output}"
+  exec_container ansible-playbook "${test_playbook}" --diff 2>&1 | tee "${output}"
 
   if grep -q 'changed=0.*failed=0' "${output}"; then
     result='pass'
