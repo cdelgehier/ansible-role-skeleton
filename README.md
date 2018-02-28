@@ -6,14 +6,14 @@ An Ansible role for PURPOSE. Specifically, the responsibilities of this role are
 
 ## Requirements
 
-No specific requirements
+- Ansible 2.4+
 
 ## Role Variables
 
 
 | Variable   | Default | Comments (type)  |
 | :---       | :---    | :---             |
-| `role_var` | -       | (scalar) PURPOSE |
+| `role_var` | `...`   | ...              |
 
 ## Dependencies
 
@@ -21,14 +21,19 @@ No dependencies.
 
 ## Example Playbook
 
-See the test playbooks in either the [Vagrant](https://github.com/cdelgehier/ansible-role-ROLENAME/blob/vagrant-tests/test.yml) or [Docker](https://github.com/cdelgehier/ansible-role-ROLENAME/blob/docker-tests/test.yml) test environment. See the section Testing for details.
+```yaml
+- hosts: all
+  gather_facts: true
+  become: true
+  roles:
+    - role: ROLENAME
+```
 
-## Testing
 
-There are two types of test environments available. One powered by Vagrant, another by Docker. The latter is suitable for running automated tests on Travis-CI. Test code is kept in separate orphan branches. For details of how to set up these test environments on your own machine, see the README files in the respective branches:
-
-- Vagrant: [vagrant-tests](https://github.com/cdelgehier/ansible-role-ROLENAME/tree/vagrant-tests)
-- Docker: [docker-tests](https://github.com/cdelgehier/ansible-role-ROLENAME/tree/docker-tests)
+```ini
+[all]
+node1 ansible_host=192.168.1.173
+```
 
 ## Contributing
 
@@ -38,9 +43,8 @@ Pull requests are also very welcome. The best way to submit a PR is by first cre
 
 ## License
 
-2-clause BSD license, see [LICENSE.md](LICENSE.md)
+Apache License, Version 2.0
 
 ## Contributors
 
 - [Cedric DELGEHIER](https://github.com/cdelgehier/) (maintainer)
-

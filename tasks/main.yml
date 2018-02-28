@@ -5,14 +5,14 @@
   with_first_found:
     - "{{ ansible_distribution }}.yml"
     - "{{ ansible_os_family }}.yml"
-  tags: ROLENAME
+  tags: install
 
-- name: Install packages
-  package:
-    name: "{{ item }}"
-    state: installed
-  with_items: "{{ ROLENAME_packages }}"
-  tags: ROLENAME
+- name: "Include {{ ansible_distribution }} tasks"
+  include_tasks: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}.yml"
+    - "{{ ansible_os_family }}.yml"
+  tags: install
 
 - name: Ensure service is started
   service:
@@ -20,3 +20,4 @@
     state: started
     enabled: true
   tags: ROLENAME
+...
