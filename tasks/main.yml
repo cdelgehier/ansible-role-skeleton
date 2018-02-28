@@ -19,5 +19,5 @@
     name: "{{ ROLENAME_service }}"
     state: started
     enabled: true
-  tags: ROLENAME
+  tags: configure
 ...
